@@ -1,4 +1,4 @@
-# Open and async the MCP Server
+# Open and Async the MCP Server
 
 A [Model Context Protocol](https://modelcontextprotocol.io) server for the book
 **[Open and Async](https://open-and-async.com)** by Ben Balter — the
