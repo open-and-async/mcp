@@ -6,6 +6,9 @@
   "license": "MIT",
   "author": "Ben Balter",
   "homepage": "https://open-and-async.com",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/benbalter/open-async-mcp.git"
