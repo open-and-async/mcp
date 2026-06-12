@@ -2,7 +2,7 @@
 
 **This license governs the data file `data/book.json` only.** The software in
 this package (the files under `src/`) is licensed separately under the MIT
-License — see [`LICENSE`](LICENSE).
+License — see [`CODE-LICENSE.md`](CODE-LICENSE.md).
 
 ---
 

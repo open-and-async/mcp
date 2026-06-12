@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Model Context Protocol server for the book Open and Async — async-first method tools plus the book's outline, taglines, and summaries. Ships the method, never the manuscript.",
   "type": "module",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Ben Balter",
   "homepage": "https://open-and-async.com",
   "publishConfig": {
@@ -28,6 +28,7 @@
     "src/",
     "data/book.json",
     "README.md",
+    "CODE-LICENSE.md",
     "DATA-LICENSE.md",
     "LICENSE"
   ],

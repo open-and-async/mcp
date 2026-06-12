@@ -97,9 +97,9 @@ one lands.
 
 ## Licensing
 
-This package is split-licensed:
+This package is split-licensed — see [LICENSE](LICENSE) for the overview:
 
-- **Code** (everything under `src/`) — [MIT](LICENSE).
+- **Code** (everything under `src/`) — [MIT](CODE-LICENSE.md).
 - **Data** (`data/book.json`) — proprietary; © Open & Async LLC. You may use it only
   as part of running this software. No redistribution as a standalone dataset, no
   derivative datasets, no model training. See [DATA-LICENSE.md](DATA-LICENSE.md).
