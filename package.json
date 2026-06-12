@@ -11,7 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benbalter/open-async-mcp.git"
+    "url": "git+https://github.com/open-and-async/mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/open-and-async/mcp/issues"
   },
   "keywords": [
     "mcp",
