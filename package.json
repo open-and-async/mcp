@@ -1,0 +1,42 @@
+{
+  "name": "@open-and-async/mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for the book Open and Async — async-first method tools plus the book's outline, taglines, and summaries. Ships the method, never the manuscript.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ben Balter",
+  "homepage": "https://open-and-async.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benbalter/open-async-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "async",
+    "remote-work",
+    "open-and-async",
+    "claude"
+  ],
+  "bin": {
+    "open-async-mcp": "src/index.js"
+  },
+  "files": [
+    "src/",
+    "data/book.json",
+    "README.md",
+    "DATA-LICENSE.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.0"
+  }
+}

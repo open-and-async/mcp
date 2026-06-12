@@ -1,0 +1,620 @@
+{
+  "_copyright": "© 2026 Open & Async LLC. All rights reserved.",
+  "_license": "Proprietary. Permission is granted to use this data file solely as part of operating the @open-and-async/mcp software. No redistribution as a standalone dataset, no derivative datasets, and no use as training data. The full work is the book: https://open-and-async.com. See DATA-LICENSE.md.",
+  "version": "1.0.0",
+  "buyUrl": "https://open-and-async.com",
+  "outline": [
+    {
+      "section": "Foundations and definitions",
+      "chapters": [
+        {
+          "slug": "remote-work-that-actually-works",
+          "title": "Remote work that actually works",
+          "tldr": "Most companies just moved office habits online and called it remote work, but true remote success demands a shift to openness and asynchronous collaboration—without it, you’re stuck with all the old frustrations plus new headaches. This chapter lays the groundwork so you can stop digitizing dysfunction and start building a team that actually thrives outside the office.",
+          "anchor": "#remote-work-that-actually-works"
+        },
+        {
+          "slug": "defining-open-async-and-remotefirst-work",
+          "title": "Defining Open, Async, and Remote-First Work {#what-is-distributed-and-remote-first-work}",
+          "tldr": "If you don’t nail down what “remote” and “distributed” actually mean in your company, you’ll waste months propping up broken office habits online instead of reaping the benefits of proven, open-source–style async collaboration. This chapter gives you the definitions—and the templates—you need to get it right from day one.",
+          "anchor": "#defining-open-async-and-remotefirst-work"
+        },
+        {
+          "slug": "history-of-remote-work-at-github",
+          "title": "History of Remote Work at GitHub",
+          "tldr": "GitHub used Issues, Pull Requests, and Markdown to run everything—code, legal, HR, even vacation policy—proving that open-source workflows aren't just for open source. The practices that scaled a startup to a global platform are yours to replicate.",
+          "anchor": "#history-of-remote-work-at-github"
+        }
+      ]
+    },
+    {
+      "section": "The case for open and async",
+      "chapters": [
+        {
+          "slug": "why-you-should-work-in-the-open",
+          "title": "Why You Should Work in the Open",
+          "tldr": "Working in the open stops your team from wasting time on duplicate efforts and lets everyone learn from each other's decisions—if you make your process visible now, you’ll avoid costly confusion and retracing your steps later. Master this, and your work becomes a resource the whole team can build on, not a mystery to solve all over again.",
+          "anchor": "#why-you-should-work-in-the-open"
+        },
+        {
+          "slug": "why-you-should-work-asynchronously",
+          "title": "Why You Should Work Asynchronously",
+          "tldr": "Switching to async means putting decisions in writing so you catch problems early, include everyone—no matter their time zone or meeting stamina—and stop repeating avoidable mistakes; keep relying on meetings and you’re guaranteed to miss critical input and create more costly rework. Read on to learn how “writing first” can radically improve your results, not just your calendar.",
+          "anchor": "#why-you-should-work-asynchronously"
+        },
+        {
+          "slug": "why-remote-and-distributed-work-matters",
+          "title": "Why Remote and Distributed Work Matters",
+          "tldr": "Remote and async work isn't a trend—it's how top teams win better talent, higher output, and lasting engagement by letting people work when and where they thrive. Stick with the old ways and you’ll struggle to attract, retain, or get the best from your team.",
+          "anchor": "#why-remote-and-distributed-work-matters"
+        }
+      ]
+    },
+    {
+      "section": "Core principles and mental models",
+      "chapters": [
+        {
+          "slug": "parallelization-and-flow",
+          "title": "Parallelization and Flow",
+          "tldr": "Learn how to structure your workday—and team culture—to defend true focus by using async communication and parallel work streams, so you’ll finish more high-impact tasks while avoiding the endless drain of interruptions and context switches that quietly sabotage real progress. If you don’t shift now, you’re trading your best work for constant busyness and burning out your team in the process.",
+          "anchor": "#parallelization-and-flow"
+        },
+        {
+          "slug": "impact-over-input",
+          "title": "Impact Over Input",
+          "tldr": "The correlation between hours worked and value created isn't just weak for knowledge work—it's often inverted. Optimizing for what people deliver rather than how long they're online produces better work, prevents burnout, and frees both managers and ICs from the performance theater that quietly kills remote teams.",
+          "anchor": "#impact-over-input"
+        },
+        {
+          "slug": "optimize-for-developer-happiness",
+          "title": "Optimize for Developer Happiness",
+          "tldr": "A happy engineer isn't bribed with snacks; they're one whose laptop boots, whose calendar has a four-hour block on Tuesday, and whose pull requests get reviewed within a day. Lose any one of those and the rest of this book is decoration.",
+          "anchor": "#optimize-for-developer-happiness"
+        }
+      ]
+    },
+    {
+      "section": "Working in the open",
+      "chapters": [
+        {
+          "slug": "why-everything-should-have-a-url",
+          "title": "Why Everything Should Have a URL",
+          "tldr": "If a decision, process, or artifact doesn't have a URL, it effectively doesn't exist—you're one departure, one reorg, or one Slack retention policy away from losing it forever. Linkable doesn't mean public; it means findable, shareable, and durable enough to outlast the person who created it.",
+          "anchor": "#why-everything-should-have-a-url"
+        },
+        {
+          "slug": "documentation-as-a-superpower",
+          "title": "Documentation as a Superpower",
+          "tldr": "You're the go-to person everyone Slacks with the same three questions, and every answer disappears the moment the conversation ends. Writing it down once—in the right tool, structured so people can actually find it—turns 25 hours of repeated explanations into a two-hour investment that pays for itself indefinitely.",
+          "anchor": "#documentation-as-a-superpower"
+        },
+        {
+          "slug": "the-andon-principle-for-knowledge-work",
+          "title": "The Andon Principle for Knowledge Work",
+          "tldr": "If your team's work isn’t visible, small problems stay hidden until they become major (and costly) outages; by making work open and rewarding early signals, you’ll spot—and fix—issues before they blow up. Transparency isn’t just nice-to-have—it’s your safety net against preventable disasters.",
+          "anchor": "#the-andon-principle-for-knowledge-work"
+        },
+        {
+          "slug": "work-loudly",
+          "title": "Work Loudly",
+          "tldr": "Silent work is a rework factory: you keep your head down for three weeks, then a stakeholder sees the result and says \"that's not what I meant.\" Working loudly—sharing progress, surfacing risks, including people early—turns surprise feedback into course corrections before they get expensive.",
+          "anchor": "#work-loudly"
+        },
+        {
+          "slug": "the-rule-of-no-surprises",
+          "title": "The Rule of No Surprises",
+          "tldr": "If information would surprise someone when they discover it later, share it now—not when it's convenient, not when you have a solution. One blindside can undo months of trust, but consistent transparency earns you the autonomy that makes micromanagement unnecessary.",
+          "anchor": "#the-rule-of-no-surprises"
+        }
+      ]
+    },
+    {
+      "section": "Asynchronous communications",
+      "chapters": [
+        {
+          "slug": "working-across-time-zones",
+          "title": "Working Across Time Zones",
+          "tldr": "A team spread across twelve time zones ships code around the clock—or grinds to a halt waiting for overlapping hours. The difference is whether you treat async handoffs as first-class workflows with documented context, or keep scheduling 8 AM standups that are someone else's midnight.",
+          "anchor": "#working-across-time-zones"
+        },
+        {
+          "slug": "speak-like-a-human",
+          "title": "Speak Like a Human",
+          "tldr": "In async work, you are your writing—and nobody wants to collaborate with a corporate press release. Specificity, clarity, and a human voice aren't just nice to have; they're how you build trust, ship faster, and stand out in a sea of jargon.",
+          "anchor": "#speak-like-a-human"
+        },
+        {
+          "slug": "chat-responsibly",
+          "title": "Chat Responsibly",
+          "tldr": "Chat is your team's most abused collaboration tool. Every low-value message in a busy channel is a tiny denial-of-service attack on collective attention—so lead with context, use threads, structure your channels, and treat your teammates' focus as the finite, shared resource it is.",
+          "anchor": "#chat-responsibly"
+        },
+        {
+          "slug": "the-etiquette-of-issues-and-pull-requests",
+          "title": "The Etiquette of Issues and Pull Requests",
+          "tldr": "Learn the concrete dos and don'ts of async etiquette—everything from opening issues without hesitation to using @mentions wisely—so your comments move work forward instead of creating costly confusion or needless noise. Mastering these basics will keep your team productive, your discussions discoverable, and your reputation intact.",
+          "anchor": "#the-etiquette-of-issues-and-pull-requests"
+        },
+        {
+          "slug": "meetings-are-a-point-of-escalation",
+          "title": "Meetings Are a Point of Escalation",
+          "tldr": "Stop defaulting to meetings—start with clear, written communication for most decisions and updates, and only escalate to a call when truly necessary. This shift will save your team hours, create lasting documentation everyone can find, and ensure that when you do meet, it actually moves work forward.",
+          "anchor": "#meetings-are-a-point-of-escalation"
+        },
+        {
+          "slug": "when-async-isnt-the-answer",
+          "title": "When Async Isn't the Answer {#when-async-isn-t-the-answer}",
+          "tldr": "Async isn't a shortcut—use it when there's clear ownership and deadlines, but know when to switch to real-time conversations for crises, trust-building, or fast-moving decisions. Misusing async wastes time and creates confusion; this chapter shows you exactly when to choose each mode so your team actually gets things done.",
+          "anchor": "#when-async-isnt-the-answer"
+        },
+        {
+          "slug": "choosing-the-right-collaboration-tools",
+          "title": "Choosing the Right Collaboration Tools",
+          "tldr": "Chat is for now, issues are for later, and email is for outsiders—confuse them and your team spends Tuesday relitigating Monday's decision because nobody can find it. Pick tools that are linkable, searchable, and outlive the conversation, then make those defaults non-negotiable.",
+          "anchor": "#choosing-the-right-collaboration-tools"
+        }
+      ]
+    },
+    {
+      "section": "Adopting and transitioning",
+      "chapters": [
+        {
+          "slug": "refactoring-for-remote",
+          "title": "Refactoring for Remote",
+          "tldr": "Don’t just move your meetings online—overhaul your workflows to prioritize trust, accountability, and asynchronous collaboration, or your remote team will fail for the same reasons office habits did. By the end, you’ll be able to spot and replace legacy “presence theater” with concrete, remote-friendly practices that actually help your team get work done.",
+          "anchor": "#refactoring-for-remote"
+        },
+        {
+          "slug": "retool-your-documents",
+          "title": "Retool your documents",
+          "tldr": "Until your documents live in open, reviewable formats—not locked behind proprietary word processors—your team will keep tripping over lost edits, version confusion, and slow reviews. Learn how to transition to web-friendly tools that actually support async work, or risk letting your team's best ideas get lost in the shuffle.",
+          "anchor": "#retool-your-documents"
+        },
+        {
+          "slug": "hiring-for-remote-first-teams",
+          "title": "Hiring for Remote-First Teams",
+          "tldr": "The fastest way to hire the wrong remote engineer is the four-panel onsite—same format as 2015, same bias toward people who think out loud. Replace one round with a paid two-hour async take-home and a written design review, and you'll see who can actually do the job before they sign the offer.",
+          "anchor": "#hiring-for-remote-first-teams"
+        },
+        {
+          "slug": "why-open-and-async-change-fails",
+          "title": "Why Open and Async Change Fails",
+          "tldr": "Open and async work fails when you copy old habits to new tools instead of rethinking how your team actually collaborates—learn how to spot (and fix) cultural and structural blockers before you waste months chasing symptoms. By adopting the right transitions and building safety through action, you can make these new practices visible, lasting, and impossible to ignore.",
+          "anchor": "#why-open-and-async-change-fails"
+        },
+        {
+          "slug": "lead-by-example-make-others-jealous",
+          "title": "Lead by Example: Make Others Jealous",
+          "tldr": "You don't need to sell async work—you need results so visible that other teams can't help asking how you do it. Envy drives adoption more sustainably than any mandate ever will.",
+          "anchor": "#lead-by-example-make-others-jealous"
+        }
+      ]
+    },
+    {
+      "section": "Leadership",
+      "chapters": [
+        {
+          "slug": "what-leadership-looks-like-in-open-and-async",
+          "title": "What Leadership Looks Like in Open and Async",
+          "tldr": "In open and async teams, your leadership is measured by the clarity and usefulness of what you document—decisions, priorities, and expectations—not your title or charisma. If you don’t make your thinking visible, you’re not leading anyone who isn’t in the room with you (and in remote work, there is no room).",
+          "anchor": "#what-leadership-looks-like-in-open-and-async"
+        },
+        {
+          "slug": "leaders-show-their-work",
+          "title": "Leaders Show Their Work",
+          "tldr": "If you document only what you decided, not why or how, you force others to repeat your work—or make costly mistakes—when context fades; by consistently showing your reasoning, you build trust, preserve knowledge, and make better leaders out of those who follow.",
+          "anchor": "#leaders-show-their-work"
+        },
+        {
+          "slug": "engaging-with-dissent",
+          "title": "Engaging with Dissent",
+          "tldr": "If you engage openly with dissent—inviting public questions, responding with transparency, and clarifying when decisions are final—you’ll build trust, boost morale, and avoid the costly fallout of silent resentment; ignore it, and you risk losing both your team’s buy-in and their best ideas. After this chapter, you’ll know how to turn pushback into progress and keep your remote team aligned, even when opinions diverge.",
+          "anchor": "#engaging-with-dissent"
+        },
+        {
+          "slug": "lead-like-an-engineer",
+          "title": "Lead Like an Engineer",
+          "tldr": "Stop running parallel project spreadsheets—lead your team where they work by managing everything in issues, pull requests, and project boards. When you make decisions and progress visible in the same tools your engineers use, you save time, reduce confusion, and give your team the clarity they need to move faster without constant meetings.",
+          "anchor": "#lead-like-an-engineer"
+        },
+        {
+          "slug": "rethinking-management-for-remote-teams",
+          "title": "Rethinking Management for Remote Teams",
+          "tldr": "Learn how moving routine updates and decisions into open, shared systems transforms managers from message-passing intermediaries into true leaders who coach, unblock, and inspire—because if you’re still relying on chains of status meetings, you’re wasting talent and losing speed. Discover why the real value of management isn't in relaying information, but in creating clarity, trust, and momentum your team can feel.",
+          "anchor": "#rethinking-management-for-remote-teams"
+        },
+        {
+          "slug": "how-to-oneonone",
+          "title": "How to One-on-One",
+          "tldr": "If your 1:1s are just status updates, you're wasting your team's most valuable real-time opportunity—transform them into protected space for trust, coaching, and honest conversations, or risk missing the issues that really matter. After reading this chapter, you’ll learn practical ways to prepare, structure, and lead 1:1s that actually matter for your team and your leadership.",
+          "anchor": "#how-to-oneonone"
+        },
+        {
+          "slug": "career-conversations",
+          "title": "Career Conversations",
+          "tldr": "If your 1:1s are all status updates, you’re missing the real opportunity: regular, honest career conversations help you avoid nasty surprises like burnout or sudden departures and give your team a clear path to grow—don’t wait for an annual review to find out what matters most. After this chapter, you’ll know exactly how to start and sustain these game-changing discussions that shape careers before you’re forced to.",
+          "anchor": "#career-conversations"
+        },
+        {
+          "slug": "weekly-reporting-that-doesnt-suck",
+          "title": "Weekly Reporting That Doesn't Suck {#weekly-reporting-that-doesnt-suck}",
+          "tldr": "Stop assembling Friday status decks from scratch—if your daily work already lives in issues and project boards, reporting is just a query you run, not a document you write. Automate the highlights, and your boss never has to ask, \"What's everyone working on?\"",
+          "anchor": "#weekly-reporting-that-doesnt-suck"
+        },
+        {
+          "slug": "the-zen-of-open-and-async-work-for-leaders",
+          "title": "The Zen of Open and Async Work for Leaders",
+          "tldr": "Your team won't be braver than you are. Every open and async practice eventually breaks at the edge—and when it does, you don't reach for a better tool, you reach for four principles: psychological safety, explicit expectations, visible work, and the openness you model before you ask anyone else for it.",
+          "anchor": "#the-zen-of-open-and-async-work-for-leaders"
+        }
+      ]
+    },
+    {
+      "section": "Team health, culture, and sustainability",
+      "chapters": [
+        {
+          "slug": "what-i-wish-i-knew-before-going-remote",
+          "title": "What I Wish I Knew Before Going Remote",
+          "tldr": "Nobody tells you this before you go remote: your success hinges on owning your own onboarding, shipping something—anything—within your first two weeks, and surviving the month-one firehose of async communication without panicking. And if you're the manager, your job is to design the experience so none of that depends on luck.",
+          "anchor": "#what-i-wish-i-knew-before-going-remote"
+        },
+        {
+          "slug": "remote-onboarding-guide",
+          "title": "Remote Onboarding Done Right",
+          "tldr": "Remote onboarding isn’t just logistics—it’s your chance to deliberately shape a new hire’s experience, set clear expectations, and build lasting culture from day one. Skip this, and you risk confusion, isolation, and missed alignment that can haunt your team long after the first quarter.",
+          "anchor": "#remote-onboarding-guide"
+        },
+        {
+          "slug": "corporate-selfcare",
+          "title": "Corporate Self-Care",
+          "tldr": "In a remote world, your growth and well-being won’t manage themselves—learn how to set boundaries, document your wins, and run regular “career retros” so your work stays visible and your career stays in your hands. If you don’t, burnout and missed opportunities become the default—not the exception.",
+          "anchor": "#corporate-selfcare"
+        },
+        {
+          "slug": "showing-colleagues-theyre-valued",
+          "title": "Showing Colleagues They're Valued {#simple-ways-to-show-employees-they-re-valued}",
+          "tldr": "Replacing an employee costs six to nine months' salary—and the exit interview rarely mentions the real reason: nobody noticed them. Recognition isn't a management perk; it's everyone's job, and the smallest gestures cost nothing while compounding into the kind of loyalty no retention bonus can buy.",
+          "anchor": "#showing-colleagues-theyre-valued"
+        },
+        {
+          "slug": "work-should-be-fun",
+          "title": "Work Should Be Fun",
+          "tldr": "Fun isn't a perk—it's infrastructure. A 15-minute Among Us session or a meme channel replaces the office water-cooler moments that build trust and psychological safety, and without them, async threads turn sour and top performers quietly slip away.",
+          "anchor": "#work-should-be-fun"
+        },
+        {
+          "slug": "handling-conflict-remotely",
+          "title": "Handling Conflict Remotely",
+          "tldr": "Remote conflict festers—spot signs like escalating tone, silence, or thread fatigue early, and switch from async to a real-time call before minor misunderstandings sap your team's trust and productivity. You'll learn when, why, and how to intervene so small issues don't turn into lasting divisions.",
+          "anchor": "#handling-conflict-remotely"
+        },
+        {
+          "slug": "making-the-most-of-inperson-time",
+          "title": "Making the Most of In-Person Time",
+          "tldr": "Onsites exist to build the trust that makes the next six months of async collaboration actually work—not to cram status updates into a conference room. Treat in-person time as a scarce, expensive resource and spend it on what only co-location can deliver.",
+          "anchor": "#making-the-most-of-inperson-time"
+        }
+      ]
+    },
+    {
+      "section": "Looking forward",
+      "chapters": [
+        {
+          "slug": "ai-as-a-thought-partner",
+          "title": "AI as a Thought Partner {#ai-as-a-thought-partner}",
+          "tldr": "Using AI as a thought partner sharpens your thinking by forcing you to clarify problems, challenge your assumptions, and articulate your goals; rely on it as a shortcut and you risk losing the critical insight and judgment that make your work valuable. This chapter will show you how to harness AI to elevate your own expertise—without letting it do your thinking for you.",
+          "anchor": "#ai-as-a-thought-partner"
+        },
+        {
+          "slug": "agentic-workflows",
+          "title": "Agentic Workflows",
+          "tldr": "Treat AI agents as remote teammates—hand them clear issues, let them push branches, and review their pull requests as you would any human's. Get this right, and you'll multiply your team's output without rewriting your workflow; skip it, and you'll waste hours cleaning up confused pull requests.",
+          "anchor": "#agentic-workflows"
+        }
+      ]
+    }
+  ],
+  "takeaways": [
+    {
+      "section": "Foundations and definitions",
+      "points": [
+        "Most companies just moved office habits online and called it remote work, but true remote success demands a shift to openness and asynchronous collaboration—without it, you’re stuck with all the old frustrations plus new headaches.",
+        "If you don’t nail down what “remote” and “distributed” actually mean in your company, you’ll waste months propping up broken office habits online instead of reaping the benefits of proven, open-source–style async collaboration.",
+        "GitHub used Issues, Pull Requests, and Markdown to run everything—code, legal, HR, even vacation policy—proving that open-source workflows aren't just for open source. The practices that scaled a startup to a global platform are yours to replicate."
+      ]
+    },
+    {
+      "section": "The case for open and async",
+      "points": [
+        "Working in the open stops your team from wasting time on duplicate efforts and lets everyone learn from each other's decisions—if you make your process visible now, you’ll avoid costly confusion and retracing your steps later. Master this, and your work becomes a resource the whole team can build on, not a mystery to solve all over again.",
+        "Switching to async means putting decisions in writing so you catch problems early, include everyone—no matter their time zone or meeting stamina—and stop repeating avoidable mistakes; keep relying on meetings and you’re guaranteed to miss critical input and create more costly rework.",
+        "Remote and async work isn't a trend—it's how top teams win better talent, higher output, and lasting engagement by letting people work when and where they thrive. Stick with the old ways and you’ll struggle to attract, retain, or get the best from your team."
+      ]
+    },
+    {
+      "section": "Core principles and mental models",
+      "points": [
+        "Learn how to structure your workday—and team culture—to defend true focus by using async communication and parallel work streams, so you’ll finish more high-impact tasks while avoiding the endless drain of interruptions and context switches that quietly sabotage real progress. If you don’t shift now, you’re trading your best work for constant busyness and burning out your team in the process.",
+        "The correlation between hours worked and value created isn't just weak for knowledge work—it's often inverted. Optimizing for what people deliver rather than how long they're online produces better work, prevents burnout, and frees both managers and ICs from the performance theater that quietly kills remote teams.",
+        "A happy engineer isn't bribed with snacks; they're one whose laptop boots, whose calendar has a four-hour block on Tuesday, and whose pull requests get reviewed within a day. Lose any one of those and the rest of this book is decoration."
+      ]
+    },
+    {
+      "section": "Working in the open",
+      "points": [
+        "If a decision, process, or artifact doesn't have a URL, it effectively doesn't exist—you're one departure, one reorg, or one Slack retention policy away from losing it forever. Linkable doesn't mean public; it means findable, shareable, and durable enough to outlast the person who created it.",
+        "You're the go-to person everyone Slacks with the same three questions, and every answer disappears the moment the conversation ends. Writing it down once—in the right tool, structured so people can actually find it—turns 25 hours of repeated explanations into a two-hour investment that pays for itself indefinitely.",
+        "If your team's work isn’t visible, small problems stay hidden until they become major (and costly) outages; by making work open and rewarding early signals, you’ll spot—and fix—issues before they blow up. Transparency isn’t just nice-to-have—it’s your safety net against preventable disasters.",
+        "Silent work is a rework factory: you keep your head down for three weeks, then a stakeholder sees the result and says \"that's not what I meant.\" Working loudly—sharing progress, surfacing risks, including people early—turns surprise feedback into course corrections before they get expensive.",
+        "If information would surprise someone when they discover it later, share it now—not when it's convenient, not when you have a solution. One blindside can undo months of trust, but consistent transparency earns you the autonomy that makes micromanagement unnecessary."
+      ]
+    },
+    {
+      "section": "Asynchronous communications",
+      "points": [
+        "A team spread across twelve time zones ships code around the clock—or grinds to a halt waiting for overlapping hours. The difference is whether you treat async handoffs as first-class workflows with documented context, or keep scheduling 8 AM standups that are someone else's midnight.",
+        "In async work, you are your writing—and nobody wants to collaborate with a corporate press release. Specificity, clarity, and a human voice aren't just nice to have; they're how you build trust, ship faster, and stand out in a sea of jargon.",
+        "Chat is your team's most abused collaboration tool. Every low-value message in a busy channel is a tiny denial-of-service attack on collective attention—so lead with context, use threads, structure your channels, and treat your teammates' focus as the finite, shared resource it is.",
+        "Learn the concrete dos and don'ts of async etiquette—everything from opening issues without hesitation to using @mentions wisely—so your comments move work forward instead of creating costly confusion or needless noise. Mastering these basics will keep your team productive, your discussions discoverable, and your reputation intact.",
+        "Stop defaulting to meetings—start with clear, written communication for most decisions and updates, and only escalate to a call when truly necessary. This shift will save your team hours, create lasting documentation everyone can find, and ensure that when you do meet, it actually moves work forward.",
+        "Async isn't a shortcut—use it when there's clear ownership and deadlines, but know when to switch to real-time conversations for crises, trust-building, or fast-moving decisions.",
+        "Chat is for now, issues are for later, and email is for outsiders—confuse them and your team spends Tuesday relitigating Monday's decision because nobody can find it. Pick tools that are linkable, searchable, and outlive the conversation, then make those defaults non-negotiable."
+      ]
+    },
+    {
+      "section": "Adopting and transitioning",
+      "points": [
+        "Don’t just move your meetings online—overhaul your workflows to prioritize trust, accountability, and asynchronous collaboration, or your remote team will fail for the same reasons office habits did. By the end, you’ll be able to spot and replace legacy “presence theater” with concrete, remote-friendly practices that actually help your team get work done.",
+        "Until your documents live in open, reviewable formats—not locked behind proprietary word processors—your team will keep tripping over lost edits, version confusion, and slow reviews. Learn how to transition to web-friendly tools that actually support async work, or risk letting your team's best ideas get lost in the shuffle.",
+        "The fastest way to hire the wrong remote engineer is the four-panel onsite—same format as 2015, same bias toward people who think out loud. Replace one round with a paid two-hour async take-home and a written design review, and you'll see who can actually do the job before they sign the offer.",
+        "Open and async work fails when you copy old habits to new tools instead of rethinking how your team actually collaborates—learn how to spot (and fix) cultural and structural blockers before you waste months chasing symptoms. By adopting the right transitions and building safety through action, you can make these new practices visible, lasting, and impossible to ignore.",
+        "You don't need to sell async work—you need results so visible that other teams can't help asking how you do it. Envy drives adoption more sustainably than any mandate ever will."
+      ]
+    },
+    {
+      "section": "Leadership",
+      "points": [
+        "In open and async teams, your leadership is measured by the clarity and usefulness of what you document—decisions, priorities, and expectations—not your title or charisma. If you don’t make your thinking visible, you’re not leading anyone who isn’t in the room with you (and in remote work, there is no room).",
+        "If you document only what you decided, not why or how, you force others to repeat your work—or make costly mistakes—when context fades; by consistently showing your reasoning, you build trust, preserve knowledge, and make better leaders out of those who follow.",
+        "If you engage openly with dissent—inviting public questions, responding with transparency, and clarifying when decisions are final—you’ll build trust, boost morale, and avoid the costly fallout of silent resentment; ignore it, and you risk losing both your team’s buy-in and their best ideas.",
+        "Stop running parallel project spreadsheets—lead your team where they work by managing everything in issues, pull requests, and project boards. When you make decisions and progress visible in the same tools your engineers use, you save time, reduce confusion, and give your team the clarity they need to move faster without constant meetings.",
+        "Learn how moving routine updates and decisions into open, shared systems transforms managers from message-passing intermediaries into true leaders who coach, unblock, and inspire—because if you’re still relying on chains of status meetings, you’re wasting talent and losing speed. Discover why the real value of management isn't in relaying information, but in creating clarity, trust, and momentum your team can feel.",
+        "If your 1:1s are just status updates, you're wasting your team's most valuable real-time opportunity—transform them into protected space for trust, coaching, and honest conversations, or risk missing the issues that really matter.",
+        "If your 1:1s are all status updates, you’re missing the real opportunity: regular, honest career conversations help you avoid nasty surprises like burnout or sudden departures and give your team a clear path to grow—don’t wait for an annual review to find out what matters most.",
+        "Stop assembling Friday status decks from scratch—if your daily work already lives in issues and project boards, reporting is just a query you run, not a document you write. Automate the highlights, and your boss never has to ask, \"What's everyone working on?\"",
+        "Your team won't be braver than you are. Every open and async practice eventually breaks at the edge—and when it does, you don't reach for a better tool, you reach for four principles: psychological safety, explicit expectations, visible work, and the openness you model before you ask anyone else for it."
+      ]
+    },
+    {
+      "section": "Team health, culture, and sustainability",
+      "points": [
+        "Nobody tells you this before you go remote: your success hinges on owning your own onboarding, shipping something—anything—within your first two weeks, and surviving the month-one firehose of async communication without panicking. And if you're the manager, your job is to design the experience so none of that depends on luck.",
+        "Remote onboarding isn’t just logistics—it’s your chance to deliberately shape a new hire’s experience, set clear expectations, and build lasting culture from day one. Skip this, and you risk confusion, isolation, and missed alignment that can haunt your team long after the first quarter.",
+        "In a remote world, your growth and well-being won’t manage themselves—learn how to set boundaries, document your wins, and run regular “career retros” so your work stays visible and your career stays in your hands. If you don’t, burnout and missed opportunities become the default—not the exception.",
+        "Replacing an employee costs six to nine months' salary—and the exit interview rarely mentions the real reason: nobody noticed them. Recognition isn't a management perk; it's everyone's job, and the smallest gestures cost nothing while compounding into the kind of loyalty no retention bonus can buy.",
+        "Fun isn't a perk—it's infrastructure. A 15-minute Among Us session or a meme channel replaces the office water-cooler moments that build trust and psychological safety, and without them, async threads turn sour and top performers quietly slip away.",
+        "Remote conflict festers—spot signs like escalating tone, silence, or thread fatigue early, and switch from async to a real-time call before minor misunderstandings sap your team's trust and productivity. You'll learn when, why, and how to intervene so small issues don't turn into lasting divisions.",
+        "Onsites exist to build the trust that makes the next six months of async collaboration actually work—not to cram status updates into a conference room. Treat in-person time as a scarce, expensive resource and spend it on what only co-location can deliver."
+      ]
+    },
+    {
+      "section": "Looking forward",
+      "points": [
+        "Using AI as a thought partner sharpens your thinking by forcing you to clarify problems, challenge your assumptions, and articulate your goals; rely on it as a shortcut and you risk losing the critical insight and judgment that make your work valuable.",
+        "Treat AI agents as remote teammates—hand them clear issues, let them push branches, and review their pull requests as you would any human's. Get this right, and you'll multiply your team's output without rewriting your workflow; skip it, and you'll waste hours cleaning up confused pull requests."
+      ]
+    }
+  ],
+  "taglines": [
+    {
+      "slug": "hours-worked",
+      "text": "Hours worked ≠ value created.",
+      "chapter": "impact-over-input",
+      "chapter_title": "Impact Over Input",
+      "anchor": "#impact-over-input",
+      "card": "https://open-and-async.com/q/hours-worked"
+    },
+    {
+      "slug": "meetings-die",
+      "text": "Meetings are where work goes to die.",
+      "chapter": "meetings-are-a-point-of-escalation",
+      "chapter_title": "Meetings Are a Point of Escalation",
+      "anchor": "#meetings-are-a-point-of-escalation",
+      "card": "https://open-and-async.com/q/meetings-die"
+    },
+    {
+      "slug": "writing-scales",
+      "text": "Writing scales; meetings don't.",
+      "chapter": "meetings-are-a-point-of-escalation",
+      "chapter_title": "Meetings Are a Point of Escalation",
+      "anchor": "#meetings-are-a-point-of-escalation",
+      "card": "https://open-and-async.com/q/writing-scales"
+    },
+    {
+      "slug": "silence-invisibility",
+      "text": "Silence is not consent; it's invisibility.",
+      "chapter": "work-loudly",
+      "chapter_title": "Work Loudly",
+      "anchor": "#work-loudly",
+      "card": "https://open-and-async.com/q/silence-invisibility"
+    },
+    {
+      "slug": "controls-your-time",
+      "text": "Everyone else controls your time, not you.",
+      "chapter": "parallelization-and-flow",
+      "chapter_title": "Parallelization & Flow",
+      "anchor": "#parallelization-and-flow",
+      "card": "https://open-and-async.com/q/controls-your-time"
+    },
+    {
+      "slug": "every-workflow-pr",
+      "text": "Every workflow is a pull request waiting to happen.",
+      "chapter": "history-of-remote-work-at-github",
+      "chapter_title": "A History of Remote Work at GitHub",
+      "anchor": "#history-of-remote-work-at-github",
+      "card": "https://open-and-async.com/q/every-workflow-pr"
+    },
+    {
+      "slug": "work-invisible",
+      "text": "If work isn't visible, it might as well not exist.",
+      "chapter": "working-in-the-open",
+      "chapter_title": "Working in the Open",
+      "anchor": "#working-in-the-open",
+      "card": "https://open-and-async.com/q/work-invisible"
+    },
+    {
+      "slug": "institutional-memory",
+      "text": "Institutional memory shouldn't depend on individual memory.",
+      "chapter": "working-in-the-open",
+      "chapter_title": "Working in the Open",
+      "anchor": "#working-in-the-open",
+      "card": "https://open-and-async.com/q/institutional-memory"
+    },
+    {
+      "slug": "got-a-minute",
+      "text": "\"Got a minute?\" is anxiety in three words.",
+      "chapter": "chat-responsibly",
+      "chapter_title": "Chat Responsibly",
+      "anchor": "#chat-responsibly",
+      "card": "https://open-and-async.com/q/got-a-minute"
+    },
+    {
+      "slug": "control-trust",
+      "text": "Control doesn't scale; trust does.",
+      "chapter": "rethinking-management-for-remote-teams",
+      "chapter_title": "Rethinking Management for Remote Teams",
+      "anchor": "#rethinking-management-for-remote-teams",
+      "card": "https://open-and-async.com/q/control-trust"
+    },
+    {
+      "slug": "birthday",
+      "text": "Nobody quietly quits a team that remembers their birthday.",
+      "chapter": "showing-colleagues-theyre-valued",
+      "chapter_title": "Showing Colleagues They're Valued",
+      "anchor": "#showing-colleagues-theyre-valued",
+      "card": "https://open-and-async.com/q/birthday"
+    },
+    {
+      "slug": "working-from-home",
+      "text": "Working from home ≠ working remotely.",
+      "chapter": "remote-work-that-actually-works",
+      "chapter_title": "Introduction",
+      "anchor": "#remote-work-that-actually-works",
+      "card": "https://open-and-async.com/q/working-from-home"
+    },
+    {
+      "slug": "operating-system",
+      "text": "Async is the operating system; remote is the hardware.",
+      "chapter": "remote-work-that-actually-works",
+      "chapter_title": "Introduction",
+      "anchor": "#remote-work-that-actually-works",
+      "card": "https://open-and-async.com/q/operating-system"
+    },
+    {
+      "slug": "tolerate-twice",
+      "text": "Culture is whatever you tolerate twice.",
+      "chapter": "team-health-culture-and-sustainability",
+      "chapter_title": "Team Health, Culture & Sustainability",
+      "anchor": "#team-health-culture-and-sustainability",
+      "card": "https://open-and-async.com/q/tolerate-twice"
+    },
+    {
+      "slug": "tools-amplify",
+      "text": "Tools amplify culture; they don't create it.",
+      "chapter": "why-open-and-async-change-fails",
+      "chapter_title": "Why Open and Async Change Fails",
+      "anchor": "#why-open-and-async-change-fails",
+      "card": "https://open-and-async.com/q/tools-amplify"
+    },
+    {
+      "slug": "braver",
+      "text": "Your team won't be braver than you are.",
+      "chapter": "the-zen-of-open-and-async-work-for-leaders",
+      "chapter_title": "The Zen of Open and Async Work for Leaders",
+      "anchor": "#the-zen-of-open-and-async-work-for-leaders",
+      "card": "https://open-and-async.com/q/braver"
+    },
+    {
+      "slug": "tiny-meeting",
+      "text": "Every comment is a tiny meeting you just called.",
+      "chapter": "the-etiquette-of-issues-and-pull-requests",
+      "chapter_title": "The Etiquette of Issues & Pull Requests",
+      "anchor": "#the-etiquette-of-issues-and-pull-requests",
+      "card": "https://open-and-async.com/q/tiny-meeting"
+    },
+    {
+      "slug": "interruptions",
+      "text": "Interruptions don't steal minutes; they steal hours.",
+      "chapter": "parallelization-and-flow",
+      "chapter_title": "Parallelization & Flow",
+      "anchor": "#parallelization-and-flow",
+      "card": "https://open-and-async.com/q/interruptions"
+    },
+    {
+      "slug": "async-isnt-waiting",
+      "text": "Async isn't waiting. It's working.",
+      "chapter": "core-practices-for-async-communication",
+      "chapter_title": "Asynchronous Communications",
+      "anchor": "#core-practices-for-async-communication",
+      "card": "https://open-and-async.com/q/async-isnt-waiting"
+    },
+    {
+      "slug": "default-not-dogma",
+      "text": "Async is a default, not a dogma.",
+      "chapter": "when-async-isnt-the-answer",
+      "chapter_title": "When Async Isn't the Answer",
+      "anchor": "#when-async-isnt-the-answer",
+      "card": "https://open-and-async.com/q/default-not-dogma"
+    },
+    {
+      "slug": "written-down",
+      "text": "If it's not written down, it wasn't decided.",
+      "chapter": "leaders-show-their-work",
+      "chapter_title": "Leaders Show Their Work",
+      "anchor": "#leaders-show-their-work",
+      "card": "https://open-and-async.com/q/written-down"
+    },
+    {
+      "slug": "relitigated",
+      "text": "Decisions without URLs get relitigated forever.",
+      "chapter": "why-everything-should-have-a-url",
+      "chapter_title": "Why Everything Should Have a URL",
+      "anchor": "#why-everything-should-have-a-url",
+      "card": "https://open-and-async.com/q/relitigated"
+    },
+    {
+      "slug": "charm-repo",
+      "text": "Charm doesn't commit to the repo.",
+      "chapter": "what-leadership-looks-like-in-open-and-async",
+      "chapter_title": "What Leadership Looks Like in Open and Async",
+      "anchor": "#what-leadership-looks-like-in-open-and-async",
+      "card": "https://open-and-async.com/q/charm-repo"
+    },
+    {
+      "slug": "surprises",
+      "text": "Surprises break trust faster than setbacks.",
+      "chapter": "the-rule-of-no-surprises",
+      "chapter_title": "The Rule of No Surprises",
+      "anchor": "#the-rule-of-no-surprises",
+      "card": "https://open-and-async.com/q/surprises"
+    },
+    {
+      "slug": "ai-vindicated",
+      "text": "AI didn't break async work. It vindicated it.",
+      "chapter": "looking-forward",
+      "chapter_title": "AI in Open and Async Work",
+      "anchor": "#looking-forward",
+      "card": "https://open-and-async.com/q/ai-vindicated"
+    },
+    {
+      "slug": "outsource-thinking",
+      "text": "Outsource your thinking and you outsource yourself.",
+      "chapter": "ai-as-a-thought-partner",
+      "chapter_title": "AI as a Thought Partner",
+      "anchor": "#ai-as-a-thought-partner",
+      "card": "https://open-and-async.com/q/outsource-thinking"
+    }
+  ],
+  "frameworks": [],
+  "objections": []
+}
