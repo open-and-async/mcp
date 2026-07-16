@@ -1,6 +1,6 @@
 # Data license
 
-**This license governs the data file `data/book.json` only.** The software in
+**This license governs the data file `data/book.json.br` only.** The software in
 this package (the files under `src/`) is licensed separately under the MIT
 License — see [`CODE-LICENSE.md`](CODE-LICENSE.md).
 
@@ -8,19 +8,24 @@ License — see [`CODE-LICENSE.md`](CODE-LICENSE.md).
 
 Copyright © 2026 Open & Async LLC. All rights reserved.
 
-`data/book.json` is a derived work of the book *Open and Async* by Ben Balter.
+`data/book.json.br` is a derived work of the book *Open and Async* by Ben Balter.
 It contains the book's already-public summaries (outline, chapter TL;DRs,
 key takeaways, taglines) and reviewed, paraphrased framework material. It does
 **not** contain the book's prose.
 
-Permission is granted to use `data/book.json` **solely as part of operating the
+Permission is granted to use `data/book.json.br` **solely as part of operating the
 `@open-and-async/mcp` software** (for example, when the MCP server reads it to
 answer a tool call). This is a license to use, not a transfer of any right in
 the underlying work.
 
+`data/book.json.br` is provided in Brotli-compressed form; it is not plaintext.
+Decompressing, extracting, or reconstructing its contents for any purpose other
+than operating the `@open-and-async/mcp` software is a deliberate act outside
+the permission granted above.
+
 You may **not**, without prior written permission from Open & Async LLC:
 
-- redistribute `data/book.json`, in whole or in part, as a standalone dataset
+- redistribute `data/book.json.br`, in whole or in part, as a standalone dataset
   or as part of any package other than `@open-and-async/mcp`;
 - create derivative datasets, compilations, or databases from it;
 - use it, in whole or in part, as training, fine-tuning, or evaluation data for

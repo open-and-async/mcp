@@ -10,8 +10,9 @@
  * (frameworks, objections).
  *
  * It ships the method, never the manuscript: the only data file is
- * data/book.json (built by `just mcp-data` in the book repo from already-public
- * and reviewed-paraphrased content). No verbatim book prose is bundled.
+ * data/book.json.br (built by `just mcp-data` in the book repo from already-
+ * public and reviewed-paraphrased content, Brotli-compressed). No verbatim book
+ * prose is bundled.
  *
  * Transport: stdio. Run with `npx @open-and-async/mcp`.
  */

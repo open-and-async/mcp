@@ -89,9 +89,9 @@ Parameterized templates you invoke directly from your client:
 required. The reference tools answer from the book's already-public summaries and a
 paraphrased framework layer, always capped, always cited, always linked back so you
 can go deeper. No verbatim book prose is bundled (the only data file is
-`data/book.json`), so what you install is genuinely useful, not a teaser.
+`data/book.json.br`), so what you install is genuinely useful, not a teaser.
 
-**Staying current.** `data/book.json` ships with a `version` that tracks the book's
+**Staying current.** `data/book.json.br` ships with a `version` that tracks the book's
 edition, so the server can tell you which edition it's based on and re-sync when a new
 one lands.
 
@@ -100,7 +100,7 @@ one lands.
 This package is split-licensed — see [LICENSE](LICENSE) for the overview:
 
 - **Code** (everything under `src/`) — [MIT](CODE-LICENSE.md).
-- **Data** (`data/book.json`) — proprietary; © Open & Async LLC. You may use it only
+- **Data** (`data/book.json.br`) — proprietary; © Open & Async LLC. You may use it only
   as part of running this software. No redistribution as a standalone dataset, no
   derivative datasets, no model training. See [DATA-LICENSE.md](DATA-LICENSE.md).
 

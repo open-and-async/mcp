@@ -29,7 +29,7 @@
   },
   "files": [
     "src/",
-    "data/book.json",
+    "data/book.json.br",
     "README.md",
     "CODE-LICENSE.md",
     "DATA-LICENSE.md",
