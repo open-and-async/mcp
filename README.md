@@ -26,6 +26,10 @@ working tools, not reading.
 - **Win the "async is too slow" argument.** Map common objections to a ready reframe,
   pull role-aware guidance, or search the book's principles — each answer cited and
   linked.
+- **Get coached end to end.** Run the `coach` prompt with a situation and it triages
+  sync vs. async, generates the right artifact, adds role guidance, and caps with a
+  shareable line — one composed answer, or a nudge to just have the conversation when
+  that's the better call.
 
 ## Install
 
@@ -77,19 +81,28 @@ Any MCP client that speaks stdio works the same way: run `npx @open-and-async/mc
 
 - `book://outline` — sections, chapters, TL;DRs (JSON)
 - `book://taglines` — taglines + quote-card URLs (JSON)
+- `book://about` — what this server is, what it does and doesn't contain, and where to get the book
 
 ### Prompts
 
-Parameterized templates you invoke directly from your client:
-`async-standup`, `write-adr`, `meeting-to-issue`, `weekly-update`.
+Invoke these directly from your client (e.g. as slash commands):
+
+- `coach` — **the full method on one situation.** Triages sync vs. async, generates
+  the right artifact, enriches with role guidance, and caps with a shareable tagline —
+  one composed deliverable. Stops and recommends a real-time conversation when the
+  situation genuinely needs one.
+- `async-standup`, `write-adr`, `meeting-to-issue`, `weekly-update` — parameterized
+  templates for a single task.
 
 ## Good to know
 
 **It's a real tool, not a paywall.** The method tools work on their own — no book
 required. The reference tools answer from the book's already-public summaries and a
-paraphrased framework layer, always capped, always cited, always linked back so you
-can go deeper. No verbatim book prose is bundled (the only data file is
-`data/book.json.br`), so what you install is genuinely useful, not a teaser.
+paraphrased framework layer, always capped and always cited so you can trace any
+snippet to its chapter. The "get the book" link surfaces about once per session, not
+on every line — it's a tool, not an ad. No verbatim book prose is bundled (the only
+data file is `data/book.json.br`), so what you install is genuinely useful, not a
+teaser.
 
 **Staying current.** `data/book.json.br` ships with a `version` that tracks the book's
 edition, so the server can tell you which edition it's based on and re-sync when a new

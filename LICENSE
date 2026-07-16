@@ -16,7 +16,7 @@ License. You may use, modify, and redistribute it freely under those terms.
 Data
 ----
 
-The bundled data file `data/book.json` is NOT open source. It is proprietary
+The bundled data file `data/book.json.br` is NOT open source. It is proprietary
 content — © 2026 Open & Async LLC, derived from the book *Open and Async* by
 Ben Balter — and is licensed only for use as part of operating the
 `@open-and-async/mcp` software. Redistribution as a standalone dataset,
@@ -28,7 +28,7 @@ permitted.
 ---
 
 In short: the software is MIT; the book's summaries are not. Mixing the two
-(for example, redistributing `data/book.json` under the MIT terms above) is not
+(for example, redistributing `data/book.json.br` under the MIT terms above) is not
 permitted. When in doubt, the per-file licenses above control.
 
 For permissions beyond these licenses, contact Open & Async LLC via

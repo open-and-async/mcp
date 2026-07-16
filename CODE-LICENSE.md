@@ -1,7 +1,7 @@
 # Code license
 
 **This license governs the software in this package — the files under `src/`.**
-It does **not** apply to the bundled data file `data/book.json`, which is
+It does **not** apply to the bundled data file `data/book.json.br`, which is
 licensed separately under [`DATA-LICENSE.md`](DATA-LICENSE.md).
 
 ---
