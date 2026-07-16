@@ -5,9 +5,45 @@
  * Both expose already-public summary data only (no body prose).
  */
 
-import { book } from "./data.js";
+import { book, BUY_URL } from "./data.js";
 
 export function registerResources(server) {
+  server.registerResource(
+    "about",
+    "book://about",
+    {
+      title: "Open and Async — about & license",
+      description:
+        "What this server is, what it does and doesn't contain, and where to " +
+        "get the book. Pull it on demand; nothing is pushed into responses.",
+      mimeType: "text/markdown",
+    },
+    async (uri) => ({
+      contents: [
+        {
+          uri: uri.href,
+          mimeType: "text/markdown",
+          text: [
+            `# About Open and Async (data v${book.version})`,
+            ``,
+            `This server surfaces the *method* and *summaries* from the book ` +
+              `"Open and Async" by Ben Balter.`,
+            ``,
+            `- Reference/content answers are **summaries and paraphrases** — not ` +
+              `the book's full text. The complete argument, stories, and voice ` +
+              `are in the book.`,
+            `- Method-tool output is **generated from your input** — a template ` +
+              `to adapt, not the author's words or an endorsement.`,
+            `- Get the book: ${BUY_URL}`,
+            ``,
+            `_Code: MIT. Data: proprietary, © Open & Async LLC — see ` +
+              `DATA-LICENSE.md._`,
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
   server.registerResource(
     "outline",
     "book://outline",

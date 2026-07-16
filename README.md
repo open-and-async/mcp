@@ -95,6 +95,12 @@ can go deeper. No verbatim book prose is bundled (the only data file is
 edition, so the server can tell you which edition it's based on and re-sync when a new
 one lands.
 
+**Generated output is a template, not the author speaking.** The method tools format
+_your_ input into decision docs, standups, and triage calls. That output is generated
+guidance to adapt — it is not a personal statement, quote, or endorsement by Ben Balter
+or Open & Async LLC, and shouldn't be presented as one. Reference-tool snippets are
+summaries the tool cites back to the book, not verbatim prose.
+
 ## Licensing
 
 This package is split-licensed — see [LICENSE](LICENSE) for the overview:

@@ -10,6 +10,8 @@ import {
   text,
   edition,
   BUY_URL,
+  sessionFunnel,
+  resetSession,
 } from "../src/data.js";
 
 test("book loads with a version and the expected top-level layers", () => {
@@ -20,10 +22,7 @@ test("book loads with a version and the expected top-level layers", () => {
 });
 
 test("chapters are flattened from the outline with section attached", () => {
-  const fromOutline = book.outline.reduce(
-    (n, s) => n + s.chapters.length,
-    0,
-  );
+  const fromOutline = book.outline.reduce((n, s) => n + s.chapters.length, 0);
   assert.equal(chapters.length, fromOutline);
   for (const ch of chapters) {
     assert.equal(typeof ch.slug, "string");
@@ -70,17 +69,25 @@ test("capWords collapses surrounding whitespace and handles empties", () => {
   assert.equal(capWords(undefined), "");
 });
 
-test("cite includes the chapter title, the book, and the buy URL", () => {
+test("cite is attribution only — chapter title and the book, no funnel URL", () => {
   const line = cite(chapters[0]);
   assert.match(line, /Open and Async/);
   assert.ok(line.includes(chapters[0].title));
-  assert.ok(line.includes(BUY_URL));
+  assert.ok(!line.includes(BUY_URL), "cite must not repeat the buy link");
 });
 
 test("cite falls back to a bare attribution when given no chapter", () => {
   const line = cite(null);
   assert.match(line, /Open and Async/);
-  assert.ok(line.includes(BUY_URL));
+  assert.ok(!line.includes(BUY_URL));
+});
+
+test("sessionFunnel returns the buy link once, then empty until reset", () => {
+  resetSession();
+  assert.ok(sessionFunnel().includes(BUY_URL), "first call carries the funnel");
+  assert.equal(sessionFunnel(), "", "second call is empty");
+  resetSession();
+  assert.ok(sessionFunnel().includes(BUY_URL), "reset re-arms it");
 });
 
 test("text wraps a string as MCP text content", () => {

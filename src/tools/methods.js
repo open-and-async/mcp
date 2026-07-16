@@ -8,7 +8,31 @@
  */
 
 import { z } from "zod";
-import { text } from "../data.js";
+import { methodText } from "../data.js";
+
+/**
+ * When triage says "async," pick which artifact generator the coach flow should
+ * branch to next. Order = precedence: a recurring status ritual → standup; a
+ * meeting/agenda to dissolve → convert; anything else (a choice to make, or a
+ * generic "write it down") → decision doc as the safe default.
+ * @param {string} t - lowercased task text
+ * @returns {"run_async_standup"|"convert_meeting_to_async"|"draft_decision_doc"}
+ */
+function routeArtifact(t) {
+  if (
+    /\b(standup|stand-up|status update|daily update|weekly update|progress update|check-?in)\b/.test(
+      t,
+    )
+  )
+    return "run_async_standup";
+  if (
+    /\b(meeting|sync|agenda|kick-?off|all.?hands|catch.?up|invite|calendar)\b/.test(
+      t,
+    )
+  )
+    return "convert_meeting_to_async";
+  return "draft_decision_doc";
+}
 
 export function registerMethodTools(server) {
   server.registerTool(
@@ -73,7 +97,7 @@ export function registerMethodTools(server) {
           `consent. Invite disagreement explicitly._`,
       ].join("\n");
 
-      return text(doc);
+      return methodText(doc, { next: "get_guidance" });
     },
   );
 
@@ -102,8 +126,7 @@ export function registerMethodTools(server) {
           : ["(no agenda supplied — list the topics the meeting would cover)"];
       const rows = items
         .map(
-          (item) =>
-            `| ${item} | Issue / doc / PR comment? | @owner | When? |`,
+          (item) => `| ${item} | Issue / doc / PR comment? | @owner | When? |`,
         )
         .join("\n");
 
@@ -142,7 +165,7 @@ export function registerMethodTools(server) {
           `— pre-read sent, notes and decision posted back to the URL after.`,
       ].join("\n");
 
-      return text(out);
+      return methodText(out, { next: "get_guidance" });
     },
   );
 
@@ -199,7 +222,8 @@ export function registerMethodTools(server) {
       const passed = checks.filter((c) => c.pass).length;
       const score = Math.round((passed / checks.length) * 100);
       const lines = checks.map(
-        (c) => `${c.pass ? "✅" : "⚠️"} **${c.name}**${c.pass ? "" : ` — ${c.fix}`}`,
+        (c) =>
+          `${c.pass ? "✅" : "⚠️"} **${c.name}**${c.pass ? "" : ` — ${c.fix}`}`,
       );
 
       const out = [
@@ -212,7 +236,7 @@ export function registerMethodTools(server) {
           : `Tighten the ⚠️ items above. The bar: someone three time zones away should know what changed and what's at risk without asking you a single follow-up.`,
       ].join("\n");
 
-      return text(out);
+      return methodText(out);
     },
   );
 
@@ -247,7 +271,7 @@ export function registerMethodTools(server) {
           `were asleep during your sync, and creates a record of decisions and ` +
           `blockers. The thread *is* the meeting._`,
       ].join("\n");
-      return text(out);
+      return methodText(out, { next: "get_guidance" });
     },
   );
 
@@ -268,12 +292,29 @@ export function registerMethodTools(server) {
     async ({ task }) => {
       const t = task.toLowerCase();
       const syncSignals = [
-        { re: /\b(conflict|tension|disagree|argument|heated|frustrat)/, why: "interpersonal tension — sync is kinder and faster" },
-        { re: /\b(fire|outage|incident|urgent|sev|down|broke|emergency)/, why: "active incident — real-time coordination wins" },
-        { re: /\b(feedback|review conversation|one.?on.?one|1:1|performance|raise|promotion|let go|fired|layoff)/, why: "sensitive/personal — deliver it live, follow up in writing" },
-        { re: /\b(brainstorm|ideate|explore|ambiguous|unclear|figure out|messy|open.?ended)/, why: "high ambiguity with fast back-and-forth — sync to converge, then write it up" },
+        {
+          re: /\b(conflict|tension|disagree|argument|heated|frustrat)/,
+          why: "interpersonal tension — sync is kinder and faster",
+        },
+        {
+          re: /\b(fire|outage|incident|urgent|sev|down|broke|emergency)/,
+          why: "active incident — real-time coordination wins",
+        },
+        {
+          re: /\b(feedback|review conversation|one.?on.?one|1:1|performance|raise|promotion|let go|fired|layoff)/,
+          why: "sensitive/personal — deliver it live, follow up in writing",
+        },
+        {
+          re: /\b(brainstorm|ideate|explore|ambiguous|unclear|figure out|messy|open.?ended)/,
+          why: "high ambiguity with fast back-and-forth — sync to converge, then write it up",
+        },
       ];
       const hit = syncSignals.find((s) => s.re.test(t));
+
+      // Routing hints for the coach flow: sync stops the chain (suggested_tool
+      // null → "have the conversation"); async branches to an artifact tool.
+      const mode = hit ? "sync" : "async";
+      const suggested_tool = mode === "async" ? routeArtifact(t) : null;
 
       const verdict = hit ? "Lean SYNC" : "Default ASYNC";
       const reason = hit
@@ -292,14 +333,20 @@ export function registerMethodTools(server) {
         ``,
         hit
           ? `**Even if you meet:** send a written pre-read, keep it small, and ` +
-              `post the decision and notes back to a URL so the people who ` +
-              `weren't there aren't left guessing.`
+            `post the decision and notes back to a URL so the people who ` +
+            `weren't there aren't left guessing.`
           : `**To do it async well:** pick the artifact (issue/doc/PR), name one ` +
-              `decision owner, set a “decide by” date, and explicitly invite ` +
-              `dissent so silence isn't mistaken for agreement.`,
+            `decision owner, set a “decide by” date, and explicitly invite ` +
+            `dissent so silence isn't mistaken for agreement.`,
       ].join("\n");
 
-      return text(out);
+      return methodText(out, {
+        mode,
+        suggested_tool,
+        reason: hit
+          ? hit.why
+          : `async is the default here — start with ${suggested_tool}`,
+      });
     },
   );
 }

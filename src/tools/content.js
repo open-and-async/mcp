@@ -15,7 +15,7 @@ import {
   capWords,
   cite,
   text,
-  BUY_URL,
+  sessionFunnel,
 } from "../data.js";
 
 /** Lowercase haystack for keyword scoring. */
@@ -24,6 +24,18 @@ function tokens(s) {
     .toLowerCase()
     .split(/[^a-z0-9]+/)
     .filter((w) => w.length > 2);
+}
+
+/**
+ * Append the once-per-session funnel line to a response body, if it's still
+ * due. Developer-centric: after the first call it returns the body untouched,
+ * so responses carry provenance (chapter citations) but not a repeated pitch.
+ * @param {string} body
+ * @returns {ReturnType<typeof text>}
+ */
+function withFunnel(body) {
+  const f = sessionFunnel();
+  return text(f ? `${body}\n\n${f}` : body);
 }
 
 export function registerContentTools(server) {
@@ -43,14 +55,10 @@ export function registerContentTools(server) {
           .join("\n");
         return `### ${section.section}\n${chs}`;
       });
-      return text(
-        [
-          `# Open and Async — outline (v${book.version})`,
-          ``,
-          ...lines,
-          ``,
-          `Read the book: ${BUY_URL}`,
-        ].join("\n"),
+      return withFunnel(
+        [`# Open and Async — outline (v${book.version})`, ``, ...lines].join(
+          "\n",
+        ),
       );
     },
   );
@@ -65,7 +73,9 @@ export function registerContentTools(server) {
       inputSchema: {
         slug: z
           .string()
-          .describe("Chapter slug, e.g. 'impact-over-input' (from book_outline)."),
+          .describe(
+            "Chapter slug, e.g. 'impact-over-input' (from book_outline).",
+          ),
       },
     },
     async ({ slug }) => {
@@ -81,7 +91,7 @@ export function registerContentTools(server) {
         ? tags.map((t) => `- ${t.text} (${t.card})`).join("\n")
         : "_(no taglines for this chapter)_";
 
-      return text(
+      return withFunnel(
         [
           `## ${ch.title}`,
           `_Section: ${ch.section}_`,
@@ -154,9 +164,9 @@ export function registerContentTools(server) {
         .slice(0, Math.min(limit, 10));
 
       if (ranked.length === 0) {
-        return text(
-          `No matches for "${query}". Try book_outline to browse topics, then ` +
-            `get_chapter_summary for a specific chapter.\n\nRead the book: ${BUY_URL}`,
+        return withFunnel(
+          `No matches for "${capWords(query, 8)}". Try book_outline to browse topics, then ` +
+            `get_chapter_summary for a specific chapter.`,
         );
       }
 
@@ -165,13 +175,11 @@ export function registerContentTools(server) {
         return `**[${item.kind}]** ${capWords(item.body)}${where}`;
       });
 
-      return text(
+      return withFunnel(
         [
-          `# Results for "${query}" (${ranked.length})`,
+          `# Results for "${capWords(query, 8)}" (${ranked.length})`,
           ``,
           out.join("\n\n"),
-          ``,
-          `These are summaries. The full argument and stories are in the book: ${BUY_URL}`,
         ].join("\n"),
       );
     },
@@ -185,7 +193,9 @@ export function registerContentTools(server) {
         "Map a common objection to open/async work ('async is slow', 'remote " +
         "kills culture') to the book's reframe, with a chapter citation.",
       inputSchema: {
-        objection: z.string().describe("The skepticism or pushback to address."),
+        objection: z
+          .string()
+          .describe("The skepticism or pushback to address."),
       },
     },
     async ({ objection }) => {
@@ -193,7 +203,7 @@ export function registerContentTools(server) {
       if (objections.length === 0) {
         // Derived objection layer not yet reviewed/published — fall back to a
         // pointer rather than inventing book content.
-        return text(
+        return withFunnel(
           [
             `The objection-handling layer is part of the book's reviewed derived ` +
               `content and isn't bundled in this build yet.`,
@@ -201,8 +211,6 @@ export function registerContentTools(server) {
             `In the meantime, try \`search_principles\` with the core of the ` +
               `objection (e.g. "${capWords(objection, 8)}") to find the relevant ` +
               `chapter, then \`get_chapter_summary\`.`,
-            ``,
-            `The full reframe lives in the book: ${BUY_URL}`,
           ].join("\n"),
         );
       }
@@ -218,13 +226,13 @@ export function registerContentTools(server) {
         .sort((a, b) => b.n - a.n)[0];
 
       if (!best || best.n === 0) {
-        return text(
-          `No direct match. Try \`search_principles\` for "${capWords(objection, 8)}".\n\nRead the book: ${BUY_URL}`,
+        return withFunnel(
+          `No direct match. Try \`search_principles\` for "${capWords(objection, 8)}".`,
         );
       }
 
       const ch = chapterBySlug(best.o.anchor || best.o.chapter);
-      return text(
+      return withFunnel(
         [
           `**Objection:** "${best.o.trigger}"`,
           ``,
@@ -254,22 +262,23 @@ export function registerContentTools(server) {
     async ({ topic, role = "any" }) => {
       const frameworks = book.frameworks || [];
       if (frameworks.length === 0) {
-        return text(
+        return withFunnel(
           [
             `Role-aware guidance comes from the book's reviewed derived layer, ` +
               `which isn't bundled in this build yet.`,
             ``,
             `Try \`search_principles\` for "${capWords(topic, 8)}" to find the ` +
               `relevant chapter, then \`get_chapter_summary\`.`,
-            ``,
-            `Read the book: ${BUY_URL}`,
           ].join("\n"),
         );
       }
 
       const q = new Set(tokens(topic));
       const ranked = frameworks
-        .filter((f) => role === "any" || !f.role || f.role === "any" || f.role === role)
+        .filter(
+          (f) =>
+            role === "any" || !f.role || f.role === "any" || f.role === role,
+        )
         .map((f) => {
           const t = tokens(`${f.topic} ${f.guidance}`);
           let n = 0;
@@ -281,8 +290,8 @@ export function registerContentTools(server) {
         .slice(0, 3);
 
       if (ranked.length === 0) {
-        return text(
-          `No guidance matched "${topic}" for role "${role}". Try \`search_principles\`.\n\nRead the book: ${BUY_URL}`,
+        return withFunnel(
+          `No guidance matched "${topic}" for role "${role}". Try \`search_principles\`.`,
         );
       }
 
@@ -292,7 +301,7 @@ export function registerContentTools(server) {
         return `**${f.topic}**${label}\n${capWords(f.guidance)}\n${cite(ch)}`;
       });
 
-      return text(out.join("\n\n"));
+      return withFunnel(out.join("\n\n"));
     },
   );
 
@@ -322,8 +331,10 @@ export function registerContentTools(server) {
       const lines = tags.map(
         (t) => `- **${t.text}**\n  ${t.chapter_title} · ${t.card}`,
       );
-      return text(
-        [`# Taglines${chapter ? ` — ${chapter}` : ""}`, ``, ...lines].join("\n"),
+      return withFunnel(
+        [`# Taglines${chapter ? ` — ${chapter}` : ""}`, ``, ...lines].join(
+          "\n",
+        ),
       );
     },
   );

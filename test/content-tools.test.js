@@ -2,13 +2,16 @@ import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 
 import { registerContentTools } from "../src/tools/content.js";
-import { book, chapters, BUY_URL } from "../src/data.js";
+import { book, chapters, BUY_URL, resetSession } from "../src/data.js";
 import { captureServer, textOf, wordCount } from "./helpers.js";
 
 let cap;
 beforeEach(() => {
   cap = captureServer();
   registerContentTools(cap.server);
+  // The buy-link funnel is session-scoped (once per process). Reset it so each
+  // test starts a fresh "session" and the first response carries the link.
+  resetSession();
 });
 
 /** A real word from real data, so queries stay valid as the book evolves. */
@@ -17,23 +20,23 @@ const sampleWord = chapters[0].tldr
   .find((w) => w.length > 4);
 
 test("registers all six content tools", () => {
-  assert.deepEqual(
-    [...cap.tools.keys()].sort(),
-    [
-      "book_outline",
-      "get_chapter_summary",
-      "get_guidance",
-      "get_taglines",
-      "handle_objection",
-      "search_principles",
-    ],
-  );
+  assert.deepEqual([...cap.tools.keys()].sort(), [
+    "book_outline",
+    "get_chapter_summary",
+    "get_guidance",
+    "get_taglines",
+    "handle_objection",
+    "search_principles",
+  ]);
 });
 
 test("book_outline lists every section and links to buy", async () => {
   const out = textOf(await cap.call("book_outline", {}));
   for (const section of book.outline) {
-    assert.ok(out.includes(section.section), `missing section ${section.section}`);
+    assert.ok(
+      out.includes(section.section),
+      `missing section ${section.section}`,
+    );
   }
   assert.ok(out.includes(book.version));
   assert.ok(out.includes(BUY_URL));
@@ -57,7 +60,9 @@ test("get_chapter_summary lists available slugs on a miss", async () => {
 });
 
 test("search_principles returns cited, word-capped snippets", async () => {
-  const out = textOf(await cap.call("search_principles", { query: sampleWord }));
+  const out = textOf(
+    await cap.call("search_principles", { query: sampleWord }),
+  );
   assert.match(out, new RegExp(`Results for "${escapeRe(sampleWord)}"`));
   assert.ok(out.includes(BUY_URL));
 
@@ -96,7 +101,9 @@ test("get_taglines returns all taglines and can filter by chapter", async () => 
   const filtered = textOf(await cap.call("get_taglines", { chapter: slug }));
   assert.match(filtered, new RegExp(escapeRe(slug)));
 
-  const empty = textOf(await cap.call("get_taglines", { chapter: "no-such-chapter" }));
+  const empty = textOf(
+    await cap.call("get_taglines", { chapter: "no-such-chapter" }),
+  );
   assert.match(empty, /No taglines for chapter/);
 });
 
@@ -114,13 +121,28 @@ test("handle_objection and get_guidance degrade gracefully when their layer is u
   }
 
   const guide = textOf(
-    await cap.call("get_guidance", { topic: "giving feedback", role: "manager" }),
+    await cap.call("get_guidance", {
+      topic: "giving feedback",
+      role: "manager",
+    }),
   );
   if (book.frameworks.length === 0) {
     assert.match(guide, /search_principles/);
   } else {
     assert.ok(guide.length > 0);
   }
+});
+
+test("the buy-link funnel appears once per session, not on every response", async () => {
+  const first = textOf(await cap.call("book_outline", {}));
+  const second = textOf(await cap.call("get_taglines", {}));
+  assert.ok(first.includes(BUY_URL), "first response should carry the funnel");
+  assert.ok(
+    !second.includes(BUY_URL),
+    "later responses should not repeat the funnel",
+  );
+  // Provenance/content is still present on the later response.
+  assert.ok(second.includes(book.taglines[0].text));
 });
 
 function escapeRe(s) {
