@@ -1,7 +1,8 @@
 {
   "name": "@open-and-async/mcp",
-  "version": "1.0.0",
-  "description": "Model Context Protocol server for the book Open and Async — async-first method tools plus the book's outline, taglines, and summaries. Ships the method, never the manuscript.",
+  "mcpName": "com.open-and-async/mcp",
+  "version": "1.0.1",
+  "description": "Bring async-first practices into your editor and AI assistant — draft decision docs, turn meetings into async artifacts, score status updates, and triage sync vs async, plus the book Open and Async's outline, principles, and taglines. Model Context Protocol (MCP) server.",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
   "author": "Ben Balter",

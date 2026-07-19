@@ -1,0 +1,16 @@
+# Smithery config for the Open & Async MCP server.
+# This is a locally-run stdio server distributed via npm — Smithery indexes it
+# for discovery and generates the one-click install using the command below.
+startCommand:
+  type: stdio
+  # No configuration or secrets required — the server works out of the box.
+  configSchema:
+    type: object
+    required: []
+    properties: {}
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@open-and-async/mcp'],
+      env: {}
+    })
