@@ -1,7 +1,7 @@
 {
   "name": "@open-and-async/mcp",
   "mcpName": "com.open-and-async/mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bring async-first practices into your editor and AI assistant — draft decision docs, turn meetings into async artifacts, score status updates, and triage sync vs async, plus the book Open and Async's outline, principles, and taglines. Model Context Protocol (MCP) server.",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
