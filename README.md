@@ -1,5 +1,7 @@
 # Open and Async — MCP Server
 
+![Open and Async MCP Server — async-first working practices as tools your AI assistant can use](https://raw.githubusercontent.com/open-and-async/mcp/main/header.png)
+
 Bring async-first working practices into your editor and AI assistant. This
 [Model Context Protocol](https://modelcontextprotocol.io) server gives your AI the
 tools to draft a decision doc, turn a meeting into an async artifact, pressure-test a
