@@ -3,7 +3,7 @@
   "name": "com.open-and-async/mcp",
   "title": "Open & Async",
   "description": "Draft decision docs, turn meetings into async artifacts, and triage sync vs async in your editor.",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "repository": {
     "url": "https://github.com/open-and-async/mcp",
     "source": "github"
@@ -14,7 +14,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@open-and-async/mcp",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "transport": {
         "type": "stdio"
       }
