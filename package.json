@@ -23,7 +23,12 @@
     "async",
     "remote-work",
     "open-and-async",
-    "claude"
+    "claude",
+    "mcp-server",
+    "ai-tools",
+    "productivity",
+    "decision-records",
+    "standup"
   ],
   "bin": {
     "open-async-mcp": "src/index.js"
