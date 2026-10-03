@@ -20,6 +20,6 @@ Releases happen only after the owner explicitly approves that release. Agents ma
 
 A version bump keeps these in sync, or the registry entry points at a version npm doesn't have:
 
-- `version` in [`package.json`](package.json)
+- `version` in [`package.json`](package.json) and [`package-lock.json`](package-lock.json) (`npm version <x> --no-git-tag-version` updates both without creating a tag)
 - `version` and `packages[0].version` in [`server.json`](server.json)
 - `mcpName` in `package.json`, which must equal `name` in `server.json`
