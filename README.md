@@ -2,15 +2,9 @@
 
 ![Open and Async MCP Server — async-first working practices as tools your AI assistant can use](https://raw.githubusercontent.com/open-and-async/mcp/main/header.png)
 
-Bring async-first working practices into your editor and AI assistant. This
-[Model Context Protocol](https://modelcontextprotocol.io) server gives your AI the
-tools to draft a decision doc, turn a meeting into an async artifact, pressure-test a
-status update, or settle a sync-vs-async debate — without leaving the tools you
-already work in.
+Bring async-first working practices into your editor and AI assistant. This [Model Context Protocol](https://modelcontextprotocol.io) server gives your AI the tools to draft a decision doc, turn a meeting into an async artifact, pressure-test a status update, or settle a sync-vs-async debate — without leaving the tools you already work in.
 
-It's the method from **[Open and Async](https://open-and-async.com)** — the
-collaborative software-development playbook for remote and distributed teams — as
-working tools, not reading.
+It's the method from **[Open and Async](https://open-and-async.com)** — the collaborative software-development playbook for remote and distributed teams — as working tools, not reading.
 
 ## What you can do with it
 
@@ -98,32 +92,17 @@ Invoke these directly from your client (e.g. as slash commands):
 
 ## Good to know
 
-**It's a real tool, not a paywall.** The method tools work on their own — no book
-required. The reference tools answer from the book's already-public summaries and a
-paraphrased framework layer, always capped and always cited so you can trace any
-snippet to its chapter. The "get the book" link surfaces about once per session, not
-on every line — it's a tool, not an ad. No verbatim book prose is bundled (the only
-data file is `data/book.json.br`), so what you install is genuinely useful, not a
-teaser.
+**It's a real tool, not a paywall.** The method tools work on their own — no book required. The reference tools answer from the book's already-public summaries and a paraphrased framework layer, always capped and always cited so you can trace any snippet to its chapter. The "get the book" link surfaces about once per session, not on every line — it's a tool, not an ad. No verbatim book prose is bundled (the only data file is `data/book.json.br`), so what you install is genuinely useful, not a teaser.
 
-**Staying current.** `data/book.json.br` ships with a `version` that tracks the book's
-edition, so the server can tell you which edition it's based on and re-sync when a new
-one lands.
+**Staying current.** `data/book.json.br` ships with a `version` that tracks the book's edition, so the server can tell you which edition it's based on and re-sync when a new one lands.
 
-**Generated output is a template, not the author speaking.** The method tools format
-_your_ input into decision docs, standups, and triage calls. That output is generated
-guidance to adapt — it is not a personal statement, quote, or endorsement by Ben Balter
-or Open & Async LLC, and shouldn't be presented as one. Reference-tool snippets are
-summaries the tool cites back to the book, not verbatim prose.
+**Generated output is a template, not the author speaking.** The method tools format _your_ input into decision docs, standups, and triage calls. That output is generated guidance to adapt — it is not a personal statement, quote, or endorsement by Ben Balter or Open & Async LLC, and shouldn't be presented as one. Reference-tool snippets are summaries the tool cites back to the book, not verbatim prose.
 
 ## Licensing
 
 This package is split-licensed — see [LICENSE](LICENSE) for the overview:
 
 - **Code** (everything under `src/`) — [MIT](CODE-LICENSE.md).
-- **Data** (`data/book.json.br`) — proprietary; © Open & Async LLC. You may use it only
-  as part of running this software. No redistribution as a standalone dataset, no
-  derivative datasets, no model training. See [DATA-LICENSE.md](DATA-LICENSE.md).
+- **Data** (`data/book.json.br`) — proprietary; © Open & Async LLC. You may use it only as part of running this software. No redistribution as a standalone dataset, no derivative datasets, no model training. See [DATA-LICENSE.md](DATA-LICENSE.md).
 
-The full work — the stories, the voice, the complete argument — lives in the book:
-**[open-and-async.com](https://open-and-async.com)**.
+The full work — the stories, the voice, the complete argument — lives in the book: **[open-and-async.com](https://open-and-async.com)**.
