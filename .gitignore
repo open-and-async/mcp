@@ -5,3 +5,6 @@ node_modules/
 # Registry signing keys (mcp-publisher DNS/HTTP auth) — never commit
 *.pem
 key.pem
+
+# MCPB bundle build output (npm run pack:mcpb)
+*.mcpb

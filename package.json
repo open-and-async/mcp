@@ -46,7 +46,8 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "test": "node --test"
+    "test": "node --test",
+    "pack:mcpb": "npx -y @anthropic-ai/mcpb@2 pack . open-and-async.mcpb"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.1",

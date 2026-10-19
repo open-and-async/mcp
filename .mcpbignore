@@ -1,0 +1,12 @@
+.claude/
+.github/
+test/
+data/README.md
+header.png
+server.json
+smithery.yaml
+renovate.json
+manifest.json.bak
+*.pem
+*.mcpb
+CLAUDE.md
