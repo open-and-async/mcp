@@ -3,7 +3,7 @@
   "manifest_version": "0.3",
   "name": "open-and-async",
   "display_name": "Open & Async",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Draft decision docs, turn meetings into async artifacts, and triage sync vs async in your editor.",
   "long_description": "The method from Open and Async, the collaborative software development playbook for remote and distributed teams, as tools your AI assistant can use: draft an ADR from a blank page, turn \"let's hop on a call\" into an async artifact with an owner and a deadline, score a status update against the \"work loudly, no surprises\" rubric, and settle sync vs. async with the rule behind the call. Reference tools answer from the book's public summaries, cited and linked. No configuration or API keys.",
   "author": {
