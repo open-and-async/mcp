@@ -54,6 +54,17 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
+      # The registry rejects a version npm doesn't serve yet, and npm's public
+      # registry can lag the publish by a minute or more (v1.0.4 hit this).
+      - name: Wait for npm to serve this version
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          for _ in $(seq 1 30); do
+            curl -fsS -o /dev/null "https://registry.npmjs.org/@open-and-async%2fmcp/$version" && exit 0
+            sleep 10
+          done
+          echo "::error::npm still doesn't serve @open-and-async/mcp@$version after 5 minutes"
+          exit 1
       - name: Publish to the MCP registry
         env:
           MCP_PRIVATE_KEY: ${{ secrets.MCP_PRIVATE_KEY }}
