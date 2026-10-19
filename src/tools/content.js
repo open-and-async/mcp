@@ -16,6 +16,7 @@ import {
   cite,
   text,
   sessionFunnel,
+  READ_ONLY_LOCAL,
 } from "../data.js";
 
 /** Lowercase haystack for keyword scoring. */
@@ -43,6 +44,7 @@ export function registerContentTools(server) {
     "book_outline",
     {
       title: "Book outline",
+      annotations: READ_ONLY_LOCAL,
       description:
         "The map of Open and Async: every section and chapter with a one-line " +
         "TL;DR. Use it to find the right chapter for a topic.",
@@ -67,6 +69,7 @@ export function registerContentTools(server) {
     "get_chapter_summary",
     {
       title: "Get a chapter summary",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Return a chapter's TL;DR plus its taglines and a link to read the full " +
         "chapter. Summary only — no body text.",
@@ -111,6 +114,7 @@ export function registerContentTools(server) {
     "search_principles",
     {
       title: "Search the book's principles",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Keyword search across the book's summary corpus (TL;DRs, key-takeaways, " +
         "taglines, and reviewed frameworks). Returns short, cited snippets — a " +
@@ -189,6 +193,7 @@ export function registerContentTools(server) {
     "handle_objection",
     {
       title: "Handle an objection",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Map a common objection to open/async work ('async is slow', 'remote " +
         "kills culture') to the book's reframe, with a chapter citation.",
@@ -248,6 +253,7 @@ export function registerContentTools(server) {
     "get_guidance",
     {
       title: "Get role-aware guidance",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Role-aware guidance (manager or IC) for a topic, paraphrased from the " +
         "book's role callouts, with a chapter citation.",
@@ -309,6 +315,7 @@ export function registerContentTools(server) {
     "get_taglines",
     {
       title: "Get taglines",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Return the book's shareable taglines and their quote-card URLs. " +
         "Optionally filter to one chapter.",

@@ -20,6 +20,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
+import { createRequire } from "node:module";
+
 import { book, BUY_URL } from "./data.js";
 import { registerMethodTools } from "./tools/methods.js";
 import { registerContentTools } from "./tools/content.js";
@@ -69,11 +71,15 @@ const INSTRUCTIONS = [
 // so a client can surface "Open & Async — open-and-async.com" in its server UI
 // without a single line of conversation noise. Clean site URL (no UTM) — this
 // is chrome, not a campaign link.
+// The package version, not the data file's (book.version): clients show this
+// as the server's version, and it should match what npm and the registry list.
+const { version } = createRequire(import.meta.url)("../package.json");
+
 const server = new McpServer(
   {
     name: "open-async",
     title: "Open & Async",
-    version: book.version,
+    version,
     websiteUrl: BUY_URL.split("?")[0],
   },
   { instructions: INSTRUCTIONS },
@@ -89,5 +95,5 @@ await server.connect(transport);
 
 // stderr is safe for logging on a stdio transport (stdout carries the protocol).
 console.error(
-  `open-async MCP server running (data v${book.version}) — method + summary tools ready.`,
+  `open-async MCP server v${version} running (data v${book.version}) — method + summary tools ready.`,
 );

@@ -137,5 +137,17 @@ export function methodText(body, hints) {
   return text(parts.join("\n\n"));
 }
 
+/**
+ * Tool annotations shared by every tool: each one only reads the bundled data
+ * or formats the caller's input. Nothing writes, deletes, or touches the
+ * network, so clients can run them without a confirmation prompt.
+ */
+export const READ_ONLY_LOCAL = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+};
+
 /** Title-cased edition string for "which edition is this?" answers. */
 export const edition = `Open and Async — data v${book.version}`;

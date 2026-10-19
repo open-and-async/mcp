@@ -8,7 +8,7 @@
  */
 
 import { z } from "zod";
-import { methodText } from "../data.js";
+import { methodText, READ_ONLY_LOCAL } from "../data.js";
 
 /**
  * When triage says "async," pick which artifact generator the coach flow should
@@ -39,6 +39,7 @@ export function registerMethodTools(server) {
     "draft_decision_doc",
     {
       title: "Draft a decision doc (ADR)",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Turn a decision plus its options into a structured, async-friendly " +
         "decision record (ADR): context, options with tradeoffs, the decision, " +
@@ -105,6 +106,7 @@ export function registerMethodTools(server) {
     "convert_meeting_to_async",
     {
       title: "Convert a meeting to async",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Given a meeting's purpose or agenda, propose the async equivalent: " +
         "the artifact that replaces it, where it lives, who decides, and the " +
@@ -173,6 +175,7 @@ export function registerMethodTools(server) {
     "score_status_update",
     {
       title: "Score a status update",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Score a draft status update against the 'work loudly / no surprises' " +
         "rubric and suggest fixes. Good updates surface blockers early, state " +
@@ -244,6 +247,7 @@ export function registerMethodTools(server) {
     "run_async_standup",
     {
       title: "Async standup template",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Return a structured async-standup prompt a team can adopt in any chat " +
         "or issue — replaces the daily sync standup with a written, searchable " +
@@ -279,6 +283,7 @@ export function registerMethodTools(server) {
     "triage_sync_vs_async",
     {
       title: "Triage: sync or async?",
+      annotations: READ_ONLY_LOCAL,
       description:
         "Recommend whether a task should be handled synchronously or " +
         "asynchronously, using the decision rule from 'meetings are a point of " +
