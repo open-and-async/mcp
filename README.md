@@ -1,5 +1,7 @@
 # Open and Async — MCP Server
 
+[![npm](https://img.shields.io/npm/v/@open-and-async/mcp)](https://www.npmjs.com/package/@open-and-async/mcp) [![MCP registry](https://img.shields.io/badge/MCP_registry-com.open--and--async%2Fmcp-blue)](https://registry.modelcontextprotocol.io/v0/servers?search=open-and-async) [![CI](https://github.com/open-and-async/mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/open-and-async/mcp/actions/workflows/ci.yml)
+
 ![Open and Async MCP Server — async-first working practices as tools your AI assistant can use](https://raw.githubusercontent.com/open-and-async/mcp/main/header.png)
 
 Bring async-first working practices into your editor and AI assistant. This [Model Context Protocol](https://modelcontextprotocol.io) server gives your AI the tools to draft a decision doc, turn a meeting into an async artifact, pressure-test a status update, or settle a sync-vs-async debate — without leaving the tools you already work in.
@@ -35,7 +37,9 @@ It's the method from **[Open and Async](https://open-and-async.com)** — the co
 claude mcp add open-async -- npx -y @open-and-async/mcp
 ```
 
-**Claude Desktop** (`claude_desktop_config.json`):
+**Claude Desktop:** [download `open-and-async.mcpb`](https://github.com/open-and-async/mcp/releases/latest/download/open-and-async.mcpb) and open it. Claude Desktop installs it in one click, with no config file and no separate Node.js install.
+
+Or add it by hand to `claude_desktop_config.json`:
 
 ```json
 {
