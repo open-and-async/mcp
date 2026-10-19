@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
 
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
@@ -57,5 +58,26 @@ test("a tool call round-trips real text content through the protocol", async () 
     });
     const body = res.content.map((c) => c.text).join("\n");
     assert.match(body, /Async standup \(weekly\)/);
+  });
+});
+
+test("server reports the package version, not the data version", async () => {
+  const { version } = JSON.parse(
+    readFileSync(path.join(__dirname, "..", "package.json"), "utf8"),
+  );
+  await withClient(async (client) => {
+    assert.equal(client.getServerVersion().version, version);
+  });
+});
+
+test("every tool is annotated read-only, idempotent, and closed-world", async () => {
+  await withClient(async (client) => {
+    const { tools } = await client.listTools();
+    for (const t of tools) {
+      assert.equal(t.annotations?.readOnlyHint, true, `${t.name} readOnlyHint`);
+      assert.equal(t.annotations?.destructiveHint, false, `${t.name} destructiveHint`);
+      assert.equal(t.annotations?.idempotentHint, true, `${t.name} idempotentHint`);
+      assert.equal(t.annotations?.openWorldHint, false, `${t.name} openWorldHint`);
+    }
   });
 });
