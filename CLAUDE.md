@@ -14,9 +14,11 @@ Run `npm test` before every push. The server is plain JavaScript in [`src/`](src
 
 ## Releasing
 
-Nothing publishes automatically. A release is done by hand: `npm publish`, then `mcp-publisher publish` for the [MCP registry](https://registry.modelcontextprotocol.io), then `npm run pack:mcpb` and `smithery mcp publish open-and-async.mcpb -n open-and-async/mcp` for [Smithery](https://smithery.ai/docs/build/publish), with a git tag such as `v1.0.2`. Smithery takes local stdio servers only as an [MCPB bundle](https://github.com/modelcontextprotocol/mcpb) built from [`manifest.json`](manifest.json); it no longer reads `smithery.yaml`. The same `.mcpb` file is a one-click install for Claude Desktop, so it's worth attaching to the GitHub Release.
+Releases run from [`.github/workflows/release.yml`](.github/workflows/release.yml) when a `vX.Y.Z` tag is pushed, and wait in the `release` environment for the owner's approval before anything runs. Two jobs each need an approval, in order. The first tests, checks that the tag matches `package.json`, publishes to npm via [trusted publishing](https://docs.npmjs.com/trusted-publishers) (no token; adds provenance), and creates the GitHub Release with the `.mcpb` bundle attached. The second publishes `server.json` to the [MCP registry](https://registry.modelcontextprotocol.io) with the domain key in the `MCP_PRIVATE_KEY` environment secret. It runs second because the registry rejects a version npm doesn't have yet, and in its own read-only job because `mcp-publisher` is downloaded at run time. Release notes are generated from merged PRs; check that they credit outside contributors before approving.
 
-Releases happen only after the owner explicitly approves that release. Agents may prepare the version-bump pull request, but never run `npm publish` or `mcp-publisher`, push a tag, or create a GitHub Release. Push branches with `git push --no-follow-tags`.
+[Smithery](https://smithery.ai) takes local servers only as an [MCPB bundle](https://github.com/modelcontextprotocol/mcpb), but its API has refused to create new servers since at least 2026-10-19 ("Updating servers has been removed"), so the server isn't listed there. Its server card needs an `inputSchema` on every tool, which the MCPB manifest schema doesn't allow, so a Smithery bundle needs its `manifest.json` tools filled from the live `tools/list` first.
+
+Releases happen only after the owner explicitly approves that release. Agents may prepare the version-bump pull request, but never run `npm publish` or `mcp-publisher`, push a tag, create a GitHub Release, or approve a `release` deployment. Push branches with `git push --no-follow-tags`.
 
 A version bump keeps these in sync, or the registry entry points at a version npm doesn't have:
 
