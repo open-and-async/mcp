@@ -36,6 +36,24 @@ jobs:
 
       - run: npm publish
 
+      - name: Create the GitHub Release with the .mcpb bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm run pack:mcpb
+          gh release create "$GITHUB_REF_NAME" open-and-async.mcpb --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
+
+  # Separate job with read-only permissions: mcp-publisher is downloaded at
+  # run time and holds the registry key, so it never runs where the npm OIDC
+  # token or a write-scoped GITHUB_TOKEN is available.
+  registry:
+    needs: release
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
       - name: Publish to the MCP registry
         env:
           MCP_PRIVATE_KEY: ${{ secrets.MCP_PRIVATE_KEY }}
@@ -43,10 +61,3 @@ jobs:
           curl -fsSL https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
           ./mcp-publisher login dns --domain open-and-async.com --private-key "$MCP_PRIVATE_KEY"
           ./mcp-publisher publish
-
-      - name: Create the GitHub Release with the .mcpb bundle
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          npm run pack:mcpb
-          gh release create "$GITHUB_REF_NAME" open-and-async.mcpb --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
