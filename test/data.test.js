@@ -21,6 +21,20 @@ test("book loads with a version and the expected top-level layers", () => {
   }
 });
 
+// The book repo builds book.json.br from a gitignored paraphrase file. Built
+// without it, the data ships with no frameworks or objections and the content
+// tools quietly lose their answers, so a data refresh like that must fail here.
+test("bundled data includes the derived frameworks and objections", () => {
+  assert.ok(book.frameworks?.length > 0, "book.frameworks is empty");
+  assert.ok(book.objections?.length > 0, "book.objections is empty");
+  for (const role of ["any", "manager", "ic"]) {
+    assert.ok(
+      book.frameworks.some((f) => f.role === role),
+      `no frameworks for role "${role}"`,
+    );
+  }
+});
+
 test("chapters are flattened from the outline with section attached", () => {
   const fromOutline = book.outline.reduce((n, s) => n + s.chapters.length, 0);
   assert.equal(chapters.length, fromOutline);
