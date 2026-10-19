@@ -1,0 +1,52 @@
+# Publishes a release when a vX.Y.Z tag is pushed: npm (trusted publishing,
+# with provenance), the MCP registry, and the .mcpb bundle on the GitHub
+# Release. The `release` environment requires the owner's approval before any
+# step runs, so a tag alone never ships anything.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write # create the GitHub Release
+  id-token: write # npm trusted publishing (OIDC); no npm token is stored
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24" # npm >= 11.5 for trusted publishing
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+      - name: Check the tag matches package.json
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME doesn't match package.json version $version"
+            exit 1
+          fi
+
+      - run: npm publish
+
+      - name: Publish to the MCP registry
+        env:
+          MCP_PRIVATE_KEY: ${{ secrets.MCP_PRIVATE_KEY }}
+        run: |
+          curl -fsSL https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+          ./mcp-publisher login dns --domain open-and-async.com --private-key "$MCP_PRIVATE_KEY"
+          ./mcp-publisher publish
+
+      - name: Create the GitHub Release with the .mcpb bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm run pack:mcpb
+          gh release create "$GITHUB_REF_NAME" open-and-async.mcpb --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
