@@ -38,7 +38,8 @@ test("manifest.json lists exactly the tools the server registers", async () => {
   const { registerContentTools } = await import("../src/tools/content.js");
   const cap = captureServer();
   registerMethodTools(cap.server);
-  registerContentTools(cap.server);
+  const { data } = await import("../src/data.js");
+  registerContentTools(cap.server, data);
   assert.deepEqual(
     bundle.tools.map((t) => t.name).sort(),
     [...cap.tools.keys()].sort(),

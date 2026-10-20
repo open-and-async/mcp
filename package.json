@@ -1,7 +1,7 @@
 {
   "name": "@open-and-async/mcp",
   "mcpName": "com.open-and-async/mcp",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Bring async-first practices into your editor and AI assistant — draft decision docs, turn meetings into async artifacts, score status updates, and triage sync vs async, plus the book Open and Async's outline, principles, and taglines. Model Context Protocol (MCP) server.",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
@@ -30,6 +30,14 @@
     "decision-records",
     "standup"
   ],
+  "exports": {
+    "./browser": {
+      "types": "./src/browser.d.ts",
+      "default": "./src/browser.js"
+    },
+    "./data/book.json.br": "./data/book.json.br",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "open-async-mcp": "src/index.js"
   },

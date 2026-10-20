@@ -8,7 +8,7 @@
  */
 
 import { z } from "zod";
-import { methodText, READ_ONLY_LOCAL } from "../data.js";
+import { methodText, READ_ONLY_LOCAL } from "../book.js";
 
 /**
  * When triage says "async," pick which artifact generator the coach flow should

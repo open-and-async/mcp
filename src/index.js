@@ -22,7 +22,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 
 import { createRequire } from "node:module";
 
-import { book, BUY_URL } from "./data.js";
+import { book, BUY_URL, data } from "./data.js";
 import { registerMethodTools } from "./tools/methods.js";
 import { registerContentTools } from "./tools/content.js";
 import { registerResources } from "./resources.js";
@@ -86,7 +86,7 @@ const server = new McpServer(
 );
 
 registerMethodTools(server);
-registerContentTools(server);
+registerContentTools(server, data);
 registerResources(server);
 registerPrompts(server);
 
