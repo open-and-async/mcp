@@ -54,6 +54,15 @@ Or add it by hand to `claude_desktop_config.json`:
 
 Any MCP client that speaks stdio works the same way: run `npx @open-and-async/mcp`.
 
+**In the browser ([WebMCP](https://github.com/webmachinelearning/webmcp)):** the same tools can register with a page's model context, so an agent in a WebMCP browser can call them without installing anything. [open-and-async.com](https://open-and-async.com) does this. WebMCP carries tools only, not resources or prompts, and the page supplies the book data:
+
+```js
+import { registerWebMcpTools } from "@open-and-async/mcp/browser";
+
+const modelContext = document.modelContext ?? navigator.modelContext;
+if (modelContext) registerWebMcpTools({ book, modelContext }); // book: parsed data/book.json.br
+```
+
 ## The toolbox
 
 ### Method tools — pure utility, use them on any project

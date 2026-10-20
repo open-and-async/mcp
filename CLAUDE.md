@@ -12,6 +12,8 @@ npm start    # run the server over stdio
 
 Run `npm test` before every push. The server is plain JavaScript in [`src/`](src/) with no build step, and `engines` promises Node 18, so don't use newer language or runtime features.
 
+The tools also run in the browser: [`src/browser.js`](src/browser.js) (`@open-and-async/mcp/browser`) registers them with WebMCP for [open-and-async.com](https://open-and-async.com). Everything it imports, meaning [`src/book.js`](src/book.js) and [`src/tools/`](src/tools/), must stay free of `node:` modules and file reads; [`test/browser.test.js`](test/browser.test.js) enforces it. Node-only loading belongs in [`src/data.js`](src/data.js). `package.json` has an `exports` map, so a new public entry point needs a line there.
+
 ## Releasing
 
 Releases run from [`.github/workflows/release.yml`](.github/workflows/release.yml) when a `vX.Y.Z` tag is pushed, and wait in the `release` environment for the owner's approval before anything runs. Two jobs each need an approval, in order. The first tests, checks that the tag matches `package.json`, publishes to npm via [trusted publishing](https://docs.npmjs.com/trusted-publishers) (no token; adds provenance), and creates the GitHub Release with the `.mcpb` bundle attached. The second publishes `server.json` to the [MCP registry](https://registry.modelcontextprotocol.io) with the domain key in the `MCP_PRIVATE_KEY` environment secret. It runs second because the registry rejects a version npm doesn't have yet, and in its own read-only job because `mcp-publisher` is downloaded at run time. Release notes are generated from merged PRs; check that they credit outside contributors before approving.

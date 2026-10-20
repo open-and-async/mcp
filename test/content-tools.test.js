@@ -2,13 +2,13 @@ import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 
 import { registerContentTools } from "../src/tools/content.js";
-import { book, chapters, BUY_URL, resetSession } from "../src/data.js";
+import { book, chapters, BUY_URL, data, resetSession } from "../src/data.js";
 import { captureServer, textOf, wordCount } from "./helpers.js";
 
 let cap;
 beforeEach(() => {
   cap = captureServer();
-  registerContentTools(cap.server);
+  registerContentTools(cap.server, data);
   // The buy-link funnel is session-scoped (once per process). Reset it so each
   // test starts a fresh "session" and the first response carries the link.
   resetSession();

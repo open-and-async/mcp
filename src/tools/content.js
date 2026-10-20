@@ -8,16 +8,7 @@
  */
 
 import { z } from "zod";
-import {
-  book,
-  chapters,
-  chapterBySlug,
-  capWords,
-  cite,
-  text,
-  sessionFunnel,
-  READ_ONLY_LOCAL,
-} from "../data.js";
+import { capWords, cite, text, READ_ONLY_LOCAL } from "../book.js";
 
 /** Lowercase haystack for keyword scoring. */
 function tokens(s) {
@@ -28,18 +19,28 @@ function tokens(s) {
 }
 
 /**
- * Append the once-per-session funnel line to a response body, if it's still
- * due. Developer-centric: after the first call it returns the body untouched,
- * so responses carry provenance (chapter citations) but not a repeated pitch.
- * @param {string} body
- * @returns {ReturnType<typeof text>}
+ * Register the content tools against `data`, the session's book from
+ * createBook() — src/data.js's `data` under Node, or the page's own instance
+ * in the browser. Taking it as a parameter (rather than importing data.js)
+ * keeps this module free of Node file reads so src/browser.js can share it.
+ * @param {{ registerTool: Function }} server
+ * @param {ReturnType<typeof import("../book.js").createBook>} data
  */
-function withFunnel(body) {
-  const f = sessionFunnel();
-  return text(f ? `${body}\n\n${f}` : body);
-}
+export function registerContentTools(server, data) {
+  const { book, chapters, chapterBySlug, sessionFunnel } = data;
 
-export function registerContentTools(server) {
+  /**
+   * Append the once-per-session funnel line to a response body, if it's still
+   * due. Developer-centric: after the first call it returns the body untouched,
+   * so responses carry provenance (chapter citations) but not a repeated pitch.
+   * @param {string} body
+   * @returns {ReturnType<typeof text>}
+   */
+  function withFunnel(body) {
+    const f = sessionFunnel();
+    return text(f ? `${body}\n\n${f}` : body);
+  }
+
   server.registerTool(
     "book_outline",
     {
